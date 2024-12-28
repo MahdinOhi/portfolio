@@ -10,7 +10,7 @@
   /* HSL color mode */
   --hue-color: 224;
   --first-color: #5B99C2;
-  --second-color: hsl(var(--hue-color), 56%, 12%);
+  --second-color: antiquewhite;
   /*===== Fuente y tipografia =====*/
   --body-font: 'Dm Mono', sans-serif;
   --big-font-size: 2rem;
@@ -52,7 +52,7 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--second-color);
-  background-color: #f9dbba;
+  background-color: #181818;
 }
 
 h1,
@@ -118,7 +118,7 @@ img {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: #FFBE98;
+  background-color: #000000;
   box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
 }
 
@@ -150,7 +150,7 @@ img {
 
 .nav__link {
   position: relative;
-  color: #fff;
+  color: #ffffff;
 }
 
 .nav__link:hover {
@@ -297,6 +297,7 @@ img {
 
 .skills__data {
   display: flex;
+  color: rgb(254, 243, 223);
   justify-content: space-between;
   align-items: center;
   position: relative;
@@ -304,6 +305,7 @@ img {
   padding: .5rem 1rem;
   margin-bottom: var(--mb-4);
   border-radius: .5rem;
+  border: 3px solid rgb(254, 243, 223);
   box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
 }
 
@@ -390,8 +392,8 @@ img {
 
 /* ===== FOOTER =====*/
 .footer {
-  background-color: #FFBE98;
-  color: #000000;
+  background-color: #000000;
+  color: antiquewhite;
   text-align: center;
   font-weight: var(--font-semi);
   padding: 2rem 0;
@@ -404,6 +406,7 @@ img {
 
 .footer__social {
   margin-bottom: var(--mb-4);
+  color: white;
 }
 
 .footer__icon {
