@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=VT323&display=swap');
 
 #root {
-  background: linear-gradient(135deg, #6a3dff 0%, #ff7f50 33%, #0d9b87 66%, #ff4d98 100%);
+  background: linear-gradient(135deg, #2e3b8d 0%, #0f8765 33%, #9f9d2a 66%, #c12640 100%);
   background-size: 400% 400%;
-  animation: gradientShift 60s ease-in-out infinite;
+  animation: gradientShift 30s ease-in-out infinite;
   font-size: larger;
   font-family: 'VT323', monospace;
   margin: 2px;
@@ -15,21 +15,22 @@
   }
 
   25% {
-    background-position: 100% 50%;
+    background-position: 50% 0%;
   }
 
   50% {
-    background-position: 200% 50%;
+    background-position: 100% 50%;
   }
 
   75% {
-    background-position: 300% 50%;
+    background-position: 50% 100%;
   }
 
   100% {
     background-position: 0% 50%;
   }
 }
+
 
 
 .logo {

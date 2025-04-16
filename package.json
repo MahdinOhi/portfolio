@@ -1,5 +1,5 @@
 {
-  "name": "fayaz-bin-salam-portfolio-v3",
+  "name": "mahdin-ohi-portfolio-v3",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -48,6 +48,7 @@
     "fayaz-bin-salam-portfolio-v3": "file:",
     "framer-motion": "^11.3.4",
     "lucide-react": "^0.344.0",
+    "mahdin-ohi-portfolio-v3": "file:",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
