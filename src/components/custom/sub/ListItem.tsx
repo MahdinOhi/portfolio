@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { IListItem } from "@/lib/Models";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ImageOff, Link } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
@@ -15,9 +15,9 @@ interface Props {
 
 interface LinkIconProps {
   url: string | undefined;
-  isHovering: boolean
-  title: string
-  description: string
+  isHovering: boolean;
+  title: string;
+  description: string;
 }
 
 const LinkIcon: React.FC<LinkIconProps> = (props) => {
@@ -33,7 +33,12 @@ const LinkIcon: React.FC<LinkIconProps> = (props) => {
     if (isLinkString(props.url ?? "")) {
       return (
         <Button variant="ghost" size="icon" className="hover:bg-transparent">
-          <Link className={cn("h-4 w-4", isHovering ? "glowing-icon animate-bounce" : "")} />
+          <Link
+            className={cn(
+              "h-4 w-4",
+              isHovering ? "glowing-icon animate-bounce" : ""
+            )}
+          />
         </Button>
       );
     }
@@ -49,15 +54,21 @@ const ListItem: React.FC<Props> = (props) => {
 
   const onCardClicked = () => {
     if (item.link) {
-      const link = item.link
-      Amplitude.trackCustomEvent(amplitudeEvents.clicked_on_item, { link })
-      window.open(link, "_blank")
+      const link = item.link;
+      Amplitude.trackCustomEvent(amplitudeEvents.clicked_on_item, { link });
+      window.open(link, "_blank");
     }
-  }
-  const isHovering = item.title === hoveredIndex
+  };
+  const isHovering = item.title === hoveredIndex;
 
   return (
-    <div className={cn("w-full sm:w-full md:w-1/2 xl:w-1/2 2xl:w-1/3 p-1 relative group block", isLinkString(props.item.link ?? "") ? 'cursor-pointer' : 'cursor-not-allowed')}
+    <div
+      className={cn(
+        "w-full sm:w-full md:w-1/2 xl:w-1/2 2xl:w-1/3 p-1 relative group block border-4 border-transparent rounded-lg",
+        isLinkString(props.item.link ?? "")
+          ? "cursor-pointer"
+          : "cursor-not-allowed"
+      )}
       onMouseEnter={() => setHoveredIndex(item.title)}
       onMouseLeave={() => setHoveredIndex(null)}
       onClick={onCardClicked}
@@ -65,7 +76,12 @@ const ListItem: React.FC<Props> = (props) => {
       <AnimatePresence>
         {isHovering && (
           <motion.span
-            className={cn("absolute inset-0 h-full w-full block bg-opacity-15 rounded-xl", isLinkString(props.item.link ?? "") ? "bg-green-500" : "bg-red-500")}
+            className={cn(
+              "absolute inset-0 h-full w-full block bg-opacity-15 rounded-xl",
+              isLinkString(props.item.link ?? "")
+                ? "bg-green-500"
+                : "bg-red-500"
+            )}
             layoutId="hoverBackground"
             initial={{ opacity: 0 }}
             animate={{
@@ -80,7 +96,7 @@ const ListItem: React.FC<Props> = (props) => {
         )}
       </AnimatePresence>
 
-      <Card className="h-full flex flex-row w-full p-4 items-center">
+      <Card className="h-full flex flex-row w-full p-4 items-center border-5 border-white rounded-lg">
         <div className="w-8 h-8 flex min-w-8 min-h-8">
           {!imageError ? (
             <LazyLoadImage
@@ -97,7 +113,12 @@ const ListItem: React.FC<Props> = (props) => {
           <CardDescription>{item.desc}</CardDescription>
         </div>
 
-        <LinkIcon url={item.link} isHovering={isHovering} title={item.title} description={item.desc ?? ""} />
+        <LinkIcon
+          url={item.link}
+          isHovering={isHovering}
+          title={item.title}
+          description={item.desc ?? ""}
+        />
       </Card>
     </div>
   );

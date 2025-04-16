@@ -46,12 +46,12 @@ const LeftPart: React.FC<Props> = (props) => {
   };
 
   return (
-    <Card className="lg:w-1/3 xl:w-1/3 2xl:w-1/4 h-full p-0 m-0 lg:block hidden">
+    <Card className="lg:w-1/3 xl:w-1/3 2xl:w-1/4 h-full p-0 m-0 lg:block hidden bg-[#1A1C1D]">
       <CardContent className="p-0 m-0 flex flex-col h-full justify-between">
         <div className="flex flex-col w-full items-center p-10">
           <div
             ref={iconRef}
-            className="w-28 h-28 border-2 rounded-full my-8 p-2 relative overflow-hidden"
+            className="w-28 h-28 border-2 border-amber-400 rounded-full my-8 p-2 relative overflow-hidden"
           >
             <div
               className="w-full h-full cursor-pointer relative"
@@ -88,21 +88,21 @@ const LeftPart: React.FC<Props> = (props) => {
                         rotate: rotateSpring,
                         whiteSpace: "nowrap",
                       }}
-                      className="absolute -top-16 left-1/2 -translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
+                      className="absolute -top-16 left-1/2 -translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md bg-[#111] z-50 shadow-xl px-4 py-2 border border-emerald-400"
                     >
-                      <div className="absolute inset-x-10 z-30 w-[50%] -bottom-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px" />
-                      <div className="absolute left-10 w-[70%] z-30 -bottom-px bg-gradient-to-r from-transparent via-sky-500 to-transparent h-1" />
+                      <div className="absolute inset-x-10 z-30 w-[50%] -bottom-px bg-gradient-to-r from-transparent via-amber-400 to-transparent h-px" />
+                      <div className="absolute left-10 w-[70%] z-30 -bottom-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent h-1" />
 
-                      <p className="font-semibold text-primary relative z-30 text-base">
+                      <p className="font-semibold text-amber-400 relative z-30 text-base">
                         View My Resume
                       </p>
-                      <p className="text-primary text-sm text-center font-normal">
+                      <p className="text-cyan-300 text-sm text-center font-normal">
                         Click to open resume
                       </p>
                     </motion.div>
 
                     <motion.span
-                      className="absolute inset-0 h-full w-full block ring-4 ring-white bg-blue-500 bg-opacity-10 rounded-full cursor-pointer"
+                      className="absolute inset-0 h-full w-full block ring-4 ring-[#1A1C1D] bg-emerald-500 bg-opacity-10 rounded-full cursor-pointer"
                       layoutId="hoverBackground"
                       initial={{ opacity: 0 }}
                       animate={{
@@ -121,7 +121,7 @@ const LeftPart: React.FC<Props> = (props) => {
               <div className="w-full h-full flex items-center justify-center">
                 <UserCircle2
                   className={cn(
-                    "w-full h-full text-gray-500",
+                    "w-full h-full text-emerald-400",
                     isHovered
                       ? "scale-110 transition-transform duration-300 ease-out"
                       : "transition-transform"
@@ -131,11 +131,11 @@ const LeftPart: React.FC<Props> = (props) => {
             </div>
           </div>
 
-          <h1 className="text-xl font-extrabold tracking-normal">
+          <h1 className="text-4xl font-extrabold tracking-normal text-cyan-600">
             {combinedInformation.initialInformation.name}
           </h1>
 
-          <h1 className="text-sm font-bold tracking-normal mt-0.5">
+          <h1 className="text-lg font-bold tracking-normal mt-0.5 text-amber-500">
             {combinedInformation.initialInformation.occupation}
           </h1>
         </div>
@@ -153,6 +153,7 @@ const LeftPart: React.FC<Props> = (props) => {
             return (
               <Button
                 variant="outline"
+                className="border-white text-white hover:bg-amber-100 hover:text-black transition"
                 onClick={onButtonClicked}
                 key={item.name}
               >
