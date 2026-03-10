@@ -32,7 +32,7 @@ const webApps = [
 const clis = [
   {
     title: "EduBase",
-    description: "A DBMS using C [WIP]",
+    description: "A DBMS built by C and B+ Trees",
     link: "https://github.com/MahdinOhi/EduBase",
   },
 ];

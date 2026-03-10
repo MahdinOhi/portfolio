@@ -37,7 +37,7 @@ const ContactSection = () => {
           </div>
         </div>
 
-        <div className="brutal-card-sm bg-accent flex items-center gap-3 transition-all duration-100">
+        <div className="brutal-card-sm bg-primary flex items-center gap-3 transition-all duration-100">
           <Phone className="w-5 h-5 shrink-0" />
 
           <div>

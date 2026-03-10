@@ -28,7 +28,7 @@ const PortfolioSidebar = ({ onNavigate }: PortfolioSidebarProps) => {
 
       <h1 className="font-heading font-bold text-2xl mt-2">Mahdin Ohi</h1>
       <p className="font-body font-medium text-sm mt-1 text-muted-foreground">
-        Full Stack Developer | Researcher
+        Developer | Researcher
       </p>
 
       {/* Nav */}

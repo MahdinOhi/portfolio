@@ -8,7 +8,6 @@ const skillCategories = [
     skills: [
       "Django",
       "Flask",
-      "Streamlit",
       "NodeJS",
       "ExpressJS",
       "TypeScript",
@@ -20,7 +19,7 @@ const skillCategories = [
   {
     title: "Frontend Technologies & UI Components",
     color: "bg-accent",
-    skills: ["Bootstrap", "Tailwind CSS", "ReactJS", "NextJS"],
+    skills: ["Bootstrap", "Streamlit", "Tailwind CSS", "ReactJS", "NextJS"],
   },
   {
     title: "Databases",
