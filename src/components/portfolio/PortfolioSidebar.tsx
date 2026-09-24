@@ -21,7 +21,7 @@ const PortfolioSidebar = ({ onNavigate }: PortfolioSidebarProps) => {
         style={{ boxShadow: "var(--brutal-shadow)" }}
       >
         <img
-          src="ohi.webp"
+          src="mahdin_ohi.png"
           alt="Mahdin Ohi"
           className="w-full h-full object-cover"
         />
