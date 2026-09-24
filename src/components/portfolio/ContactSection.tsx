@@ -12,6 +12,10 @@ const socialLinks = [
     url: "https://www.linkedin.com/in/mahdin-ohi-3b55a0280/",
   },
   { name: "Medium", url: "https://medium.com/@mahdinislamohi" },
+  {
+    name: "ORCID",
+    url: "https://orcid.org/my-orcid?orcid=0009-0005-4056-9757",
+  },
 ];
 
 const ContactSection = () => {
@@ -46,12 +50,12 @@ const ContactSection = () => {
             </p>
 
             <a
-              href="https://wa.me/8801996652863"
+              href="https://wa.me/8801577352617"
               target="_blank"
               rel="noopener noreferrer"
               className="font-heading font-bold text-sm underline"
             >
-              +8801996652863
+              +8801577352617
             </a>
           </div>
         </div>

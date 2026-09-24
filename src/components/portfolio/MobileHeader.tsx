@@ -4,6 +4,7 @@ const navItems = [
   { label: "About", target: "about" },
   { label: "Skills", target: "skills" },
   { label: "Projects", target: "projects" },
+  { label: "Publications", target: "publications" },
   { label: "Contact", target: "contact" },
 ];
 
