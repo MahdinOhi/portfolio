@@ -2,20 +2,20 @@ import { Mail, Phone, ExternalLink } from "lucide-react";
 import SectionCard from "./SectionCard";
 
 const socialLinks = [
-  { name: "Codeforces", url: "https://codeforces.com/profile/MahdinOhi" },
-  { name: "Facebook", url: "https://www.facebook.com/mahdin.ohi07" },
-  { name: "GitHub", url: "https://github.com/MahdinOhi" },
-  { name: "Instagram", url: "https://www.instagram.com/xenon_spectre/" },
-  { name: "LeetCode", url: "https://leetcode.com/u/MahdinOhi/" },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/mahdin-ohi-3b55a0280/",
   },
-  { name: "Medium", url: "https://medium.com/@mahdinislamohi" },
+  { name: "GitHub", url: "https://github.com/MahdinOhi" },
+  { name: "LeetCode", url: "https://leetcode.com/u/MahdinOhi/" },
   {
     name: "ORCID",
     url: "https://orcid.org/my-orcid?orcid=0009-0005-4056-9757",
   },
+  { name: "Codeforces", url: "https://codeforces.com/profile/MahdinOhi" },
+  // { name: "Facebook", url: "https://www.facebook.com/mahdin.ohi07" },
+  // { name: "Instagram", url: "https://www.instagram.com/xenon_spectre/" },
+  { name: "Medium", url: "https://medium.com/@mahdinislamohi" },
 ];
 
 const ContactSection = () => {

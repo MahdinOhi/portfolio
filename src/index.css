@@ -50,6 +50,56 @@
     --brutal-shadow: 4px 4px 0px hsl(0 0% 0%);
     --brutal-shadow-sm: 2px 2px 0px hsl(0 0% 0%);
     --brutal-shadow-lg: 6px 6px 0px hsl(0 0% 0%);
+
+    --toggle-bg: 340 75% 88%;
+  }
+
+  .dark {
+    /* Gruvbox Dark Palette */
+    --background: 0 0% 16%;          /* #282828 bg0 */
+    --foreground: 43 59% 81%;        /* #ebdbb2 fg1 */
+
+    --card: 20 5% 22%;               /* #3c3836 bg1 */
+    --card-foreground: 43 59% 81%;   /* #ebdbb2 fg1 */
+
+    --popover: 20 5% 22%;            /* #3c3836 bg1 */
+    --popover-foreground: 43 59% 81%;
+
+    --primary: 145 25% 29%;          /* #385c47 Gruvbox dark aqua/green */
+    --primary-foreground: 43 59% 81%;
+
+    --secondary: 37 78% 35%;         /* #9e6614 Gruvbox dark yellow/ochre */
+    --secondary-foreground: 43 59% 81%;
+
+    --muted: 22 7% 29%;              /* #504945 bg2 */
+    --muted-foreground: 40 38% 73%;  /* #d5c4a1 fg2 */
+
+    --accent: 58 72% 26%;            /* #726e13 Gruvbox dark olive green */
+    --accent-foreground: 43 59% 81%;
+
+    --destructive: 6 96% 59%;        /* #fb4934 Gruvbox red */
+    --destructive-foreground: 48 87% 88%;
+
+    --border: 43 59% 81%;            /* #ebdbb2 */
+    --input: 43 59% 81%;
+    --ring: 42 95% 58%;              /* #fabd2f */
+
+    --sidebar-background: 195 6% 12%; /* #1d2021 bg0_h */
+    --sidebar-foreground: 43 59% 81%;
+    --sidebar-primary: 145 25% 29%;
+    --sidebar-primary-foreground: 43 59% 81%;
+    --sidebar-accent: 37 78% 35%;
+    --sidebar-accent-foreground: 43 59% 81%;
+    --sidebar-border: 43 59% 81%;
+    --sidebar-ring: 42 95% 58%;
+
+    /* Neo-brutalist tokens (Gruvbox dark) */
+    --brutal-border: 3px solid hsl(43 59% 81%);
+    --brutal-shadow: 4px 4px 0px hsl(43 59% 81%);
+    --brutal-shadow-sm: 2px 2px 0px hsl(43 59% 81%);
+    --brutal-shadow-lg: 6px 6px 0px hsl(43 59% 81%);
+
+    --toggle-bg: 20 5% 22%;          /* #3c3836 Gruvbox bg1 */
   }
 }
 
@@ -59,7 +109,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
     font-family: 'Inter', sans-serif;
   }
 
@@ -112,7 +162,54 @@
     transform: translate(2px, 2px);
     box-shadow: none;
   }
+
+  .theme-toggle-btn {
+    background-color: hsl(var(--toggle-bg));
+    box-shadow: var(--brutal-shadow-sm);
+    margin-top: 0.5rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.3s ease;
+  }
+
+  .theme-toggle-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--brutal-shadow);
+  }
+
+  .theme-toggle-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
+  }
+
+  .theme-toggle-cutout {
+    background-color: hsl(var(--toggle-bg));
+  }
 }
+
+@keyframes sun-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moon-rock {
+  0%, 100% {
+    transform: rotate(-8deg) scale(1);
+  }
+  50% {
+    transform: rotate(8deg) scale(1.06);
+  }
+}
+
+/* .animate-sun-spin {
+  animation: sun-spin 12s linear infinite;
+}
+
+.animate-moon-rock {
+  animation: moon-rock 3.5s ease-in-out infinite;
+} */
 
 /* Custom scrollbar */
 .content-scroll::-webkit-scrollbar {

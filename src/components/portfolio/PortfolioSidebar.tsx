@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { label: "About", target: "about" },
@@ -14,26 +14,26 @@ interface PortfolioSidebarProps {
 
 const PortfolioSidebar = ({ onNavigate }: PortfolioSidebarProps) => {
   return (
-    <aside className="w-[300px] shrink-0 h-screen border-r-[3px] border-foreground bg-primary flex flex-col items-center py-10 px-6 max-lg:hidden">
+    <aside className="w-[300px] shrink-0 h-screen border-r-[3px] border-foreground bg-primary flex flex-col items-center py-8 px-6 max-lg:hidden overflow-y-auto">
       {/* Profile Image */}
       <div
-        className="w-28 h-28 rounded-full border-[4px] border-foreground bg-secondary flex items-center justify-center mb-4 overflow-hidden"
+        className="w-28 h-28 shrink-0 aspect-square rounded-full border-[4px] border-foreground bg-secondary flex items-center justify-center mb-4 overflow-hidden"
         style={{ boxShadow: "var(--brutal-shadow)" }}
       >
         <img
           src="mahdin_ohi.png"
           alt="Mahdin Ohi"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-full"
         />
       </div>
 
-      <h1 className="font-heading font-bold text-2xl mt-2">Mahdin Ohi</h1>
-      <p className="font-body font-medium text-sm mt-1 text-muted-foreground">
+      <h1 className="font-heading font-bold text-2xl mt-2 shrink-0">Mahdin Ohi</h1>
+      <p className="font-body font-medium text-sm mt-1 text-muted-foreground shrink-0">
         Developer | Researcher
       </p>
 
       {/* Nav */}
-      <nav className="flex flex-col gap-3 mt-10 w-full">
+      <nav className="flex flex-col gap-3 mt-8 w-full shrink-0">
         {navItems.map((item) => (
           <button
             key={item.target}
@@ -44,6 +44,11 @@ const PortfolioSidebar = ({ onNavigate }: PortfolioSidebarProps) => {
           </button>
         ))}
       </nav>
+
+      {/* Theme Toggle Button */}
+      <div className="mt-5 shrink-0 flex items-center justify-center">
+        <ThemeToggle />
+      </div>
     </aside>
   );
 };
