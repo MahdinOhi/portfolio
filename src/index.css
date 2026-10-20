@@ -194,6 +194,48 @@
   .ease-spring {
     transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
+
+  /* Mobile floating rounded bottom navigation bar */
+  .mobile-bottom-nav-pill {
+    background-color: #24332a;
+    border: 2.5px solid hsl(var(--foreground));
+    box-shadow:
+      0 10px 26px -4px rgba(0, 0, 0, 0.38),
+      var(--brutal-shadow-sm);
+    backdrop-filter: blur(10px);
+  }
+
+  .dark .mobile-bottom-nav-pill {
+    background-color: #1d2021;
+    border-color: hsl(var(--foreground));
+    box-shadow:
+      0 12px 28px -4px rgba(0, 0, 0, 0.65),
+      0 2px 0px hsl(var(--foreground));
+  }
+
+  .mobile-nav-center-dock {
+    background-color: #2f4739;
+    border: 2.5px solid hsl(var(--foreground));
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.22);
+  }
+
+  .dark .mobile-nav-center-dock {
+    background-color: #282828;
+    border-color: hsl(var(--foreground));
+    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .mobile-nav-center-dock .theme-toggle-btn {
+    margin-top: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .content-scroll {
+    padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
 }
 
 /* Circular expanding View Transition for theme switch */
