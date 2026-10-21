@@ -8,8 +8,8 @@ interface SectionCardProps {
 
 const SectionCard = ({ id, title, children }: SectionCardProps) => {
   return (
-    <section id={id} className="brutal-card bg-background mb-8">
-      <h2 className="font-heading font-bold text-3xl mb-6 border-b-[3px] border-foreground pb-3">
+    <section id={id} className="brutal-card mb-8">
+      <h2 className="font-heading font-bold text-2xl sm:text-3xl mb-6 border-b border-[var(--glass-divider)] pb-3.5 tracking-tight">
         {title}
       </h2>
       {children}

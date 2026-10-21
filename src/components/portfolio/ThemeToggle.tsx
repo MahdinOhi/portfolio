@@ -3,23 +3,52 @@ import { useEffect, useState, useCallback, useRef } from "react";
 const RAYS = [0, 45, 90, 135, 180, 225, 270, 315];
 const THEME_CHANGE_EVENT = "portfolio-theme-change";
 
-const getInitialTheme = (): boolean => {
-  if (typeof window === "undefined") return false;
-  const saved = localStorage.getItem("theme");
-  if (saved === "dark" || saved === "light") {
-    return saved === "dark";
+const safeGetStoredTheme = (): "dark" | "light" | null => {
+  if (typeof window === "undefined") return null;
+  try {
+    const saved = window.localStorage.getItem("theme");
+    if (saved === "dark" || saved === "light") {
+      return saved;
+    }
+  } catch {
+    // Handle unavailable localStorage gracefully
   }
-  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+  return null;
 };
 
-const applyThemeToDOM = (dark: boolean) => {
+const safeSetStoredTheme = (theme: "dark" | "light") => {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem("theme", theme);
+  } catch {
+    // Handle unavailable localStorage gracefully
+  }
+};
+
+const getInitialTheme = (): boolean => {
+  if (typeof window === "undefined") return false;
+  const saved = safeGetStoredTheme();
+  if (saved !== null) {
+    return saved === "dark";
+  }
+  try {
+    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+  } catch {
+    return false;
+  }
+};
+
+const applyThemeToDOM = (dark: boolean, persist = false) => {
   const root = document.documentElement;
   if (dark) {
     root.classList.add("dark");
-    localStorage.setItem("theme", "dark");
+    root.style.colorScheme = "dark";
   } else {
     root.classList.remove("dark");
-    localStorage.setItem("theme", "light");
+    root.style.colorScheme = "light";
+  }
+  if (persist) {
+    safeSetStoredTheme(dark ? "dark" : "light");
   }
 };
 
@@ -27,9 +56,37 @@ const ThemeToggle = () => {
   const [isDark, setIsDark] = useState<boolean>(getInitialTheme);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
+  // Sync DOM class on mount without overwriting absence of stored preference
   useEffect(() => {
-    applyThemeToDOM(isDark);
+    applyThemeToDOM(isDark, false);
   }, [isDark]);
+
+  // Listen for OS prefers-color-scheme changes when no explicit preference is saved
+  useEffect(() => {
+    let mediaQuery: MediaQueryList | null = null;
+    try {
+      mediaQuery = window.matchMedia?.("(prefers-color-scheme: dark)") ?? null;
+    } catch {
+      mediaQuery = null;
+    }
+    if (!mediaQuery) return;
+
+    const handleSystemChange = (event: MediaQueryListEvent) => {
+      if (safeGetStoredTheme() === null) {
+        const nextDark = event.matches;
+        applyThemeToDOM(nextDark, false);
+        setIsDark(nextDark);
+        window.dispatchEvent(
+          new CustomEvent<boolean>(THEME_CHANGE_EVENT, { detail: nextDark })
+        );
+      }
+    };
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleSystemChange);
+      return () => mediaQuery?.removeEventListener("change", handleSystemChange);
+    }
+  }, []);
 
   // Keep desktop and mobile toggle instances in sync
   useEffect(() => {
@@ -46,7 +103,7 @@ const ThemeToggle = () => {
       const nextDark = !isDark;
 
       const updateState = () => {
-        applyThemeToDOM(nextDark);
+        applyThemeToDOM(nextDark, true);
         setIsDark(nextDark);
         window.dispatchEvent(
           new CustomEvent<boolean>(THEME_CHANGE_EVENT, { detail: nextDark })
@@ -66,9 +123,13 @@ const ThemeToggle = () => {
         startViewTransition?: (cb: () => void) => { ready: Promise<void> };
       };
 
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+      let prefersReducedMotion = false;
+      try {
+        prefersReducedMotion =
+          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+      } catch {
+        prefersReducedMotion = false;
+      }
 
       if (!doc.startViewTransition || prefersReducedMotion) {
         updateState();
@@ -88,8 +149,8 @@ const ThemeToggle = () => {
             ],
           },
           {
-            duration: 550,
-            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            duration: 500,
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
             pseudoElement: "::view-transition-new(root)",
           }
         );
@@ -106,14 +167,14 @@ const ThemeToggle = () => {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       aria-pressed={isDark}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="theme-toggle-btn group relative w-8 h-8 shrink-0 aspect-square rounded-full border-[2px] border-foreground flex items-center justify-center cursor-pointer select-none overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="theme-toggle-btn group relative w-9 h-9 shrink-0 aspect-square rounded-full flex items-center justify-center cursor-pointer select-none overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {/* Subtle inner glow ring on hover */}
       <span
         className={`pointer-events-none absolute inset-0 rounded-full transition-opacity duration-300 opacity-0 group-hover:opacity-100 ${
           isDark
-            ? "bg-[radial-gradient(circle,rgba(250,189,47,0.18)_0%,transparent_70%)]"
-            : "bg-[radial-gradient(circle,rgba(157,101,0,0.14)_0%,transparent_70%)]"
+            ? "bg-[radial-gradient(circle,rgba(56,189,248,0.2)_0%,transparent_72%)]"
+            : "bg-[radial-gradient(circle,rgba(245,158,11,0.16)_0%,transparent_72%)]"
         }`}
       />
 
@@ -129,8 +190,8 @@ const ThemeToggle = () => {
         <span
           className={`rounded-full transition-all duration-500 ease-spring ${
             isDark
-              ? "w-4 h-4 bg-[#fabd2f] shadow-[0_0_8px_rgba(250,189,47,0.45)]"
-              : "w-2.5 h-2.5 bg-[#9d6500] group-hover:scale-110"
+              ? "w-4 h-4 bg-[#fbbf24] shadow-[0_0_10px_rgba(251,191,36,0.45)]"
+              : "w-2.5 h-2.5 bg-[#d97706] group-hover:scale-110"
           }`}
         />
 
@@ -145,14 +206,14 @@ const ThemeToggle = () => {
 
         {/* Twinkling Stars (visible in dark mode around the crescent moon) */}
         <span
-          className={`absolute w-[2px] h-[2px] rounded-full bg-[#fbf1c7] transition-all duration-500 ease-spring ${
+          className={`absolute w-[2px] h-[2px] rounded-full bg-[#fef3c7] transition-all duration-500 ease-spring ${
             isDark
               ? "translate-x-[5px] translate-y-[4px] scale-100 opacity-90 delay-100 animate-pulse"
               : "translate-x-0 translate-y-0 scale-0 opacity-0"
           }`}
         />
         <span
-          className={`absolute w-[1.5px] h-[1.5px] rounded-full bg-[#ebdbb2] transition-all duration-500 ease-spring ${
+          className={`absolute w-[1.5px] h-[1.5px] rounded-full bg-[#e0f2fe] transition-all duration-500 ease-spring ${
             isDark
               ? "-translate-x-[5px] -translate-y-[4px] scale-100 opacity-75 delay-150"
               : "translate-x-0 translate-y-0 scale-0 opacity-0"
@@ -169,7 +230,7 @@ const ThemeToggle = () => {
               })`,
               transitionDelay: isDark ? "0ms" : `${idx * 18}ms`,
             }}
-            className={`absolute w-[1.5px] h-[3px] rounded-full bg-[#9d6500] transition-all duration-500 ease-spring ${
+            className={`absolute w-[1.5px] h-[3px] rounded-full bg-[#d97706] transition-all duration-500 ease-spring ${
               isDark
                 ? "scale-0 opacity-0"
                 : "scale-100 opacity-100 group-hover:h-[3.5px]"

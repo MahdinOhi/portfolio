@@ -6,100 +6,268 @@
 
 @layer base {
   :root {
-    --background: 39 100% 93%;
-    --foreground: 0 0% 0%;
+    /* Core Semantic Palette — Light Mode (Apple Daylight Alabaster & Ink) */
+    --background: 216 33% 97%;
+    --foreground: 222 47% 11%;
 
-    --card: 39 100% 93%;
-    --card-foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 39 100% 93%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 140 38% 70%;
-    --primary-foreground: 0 0% 0%;
+    /* Subtle translucent-friendly semantic tints */
+    --primary: 214 95% 93%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 42 90% 59%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 220 26% 95%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 39 100% 90%;
-    --muted-foreground: 0 0% 30%;
+    --muted: 216 24% 93%;
+    --muted-foreground: 218 17% 36%;
 
-    --accent: 90 75% 55%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 211 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 0%;
-    --input: 0 0% 0%;
-    --ring: 0 0% 0%;
+    --border: 218 22% 84%;
+    --input: 218 22% 84%;
+    --ring: 211 100% 50%;
 
-    --radius: 0.25rem;
+    --radius: 1.125rem;
 
-    --sidebar-background: 39 100% 93%;
-    --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 140 38% 70%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 42 90% 59%;
-    --sidebar-accent-foreground: 0 0% 0%;
-    --sidebar-border: 0 0% 0%;
-    --sidebar-ring: 0 0% 0%;
+    --sidebar-background: 216 33% 97%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 211 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 32% 94%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 218 22% 86%;
+    --sidebar-ring: 211 100% 50%;
 
-    /* Neo-brutalist tokens */
-    --brutal-border: 3px solid hsl(0 0% 0%);
-    --brutal-shadow: 4px 4px 0px hsl(0 0% 0%);
-    --brutal-shadow-sm: 2px 2px 0px hsl(0 0% 0%);
-    --brutal-shadow-lg: 6px 6px 0px hsl(0 0% 0%);
+    /* ==========================================================================
+       Apple-Inspired Liquid Glass Token System — Light Mode
+       ========================================================================== */
+    --bg-svg-light: url("/backgrounds/light.svg");
+    --bg-svg-dark: url("/backgrounds/dark.svg");
+    --bg-svg-active: var(--bg-svg-light);
 
-    --toggle-bg: 340 75% 88%;
+    /* Subtle ambient veil over custom SVG to guarantee contrast without altering artwork */
+    --bg-veil: linear-gradient(
+      180deg,
+      rgba(248, 250, 252, 0.16) 0%,
+      rgba(241, 245, 249, 0.24) 100%
+    );
+
+    /* Typography Hierarchy Tokens */
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #526077;
+    --text-accent: #0066cc;
+
+    /* Liquid Glass Surface Fills */
+    --glass-sidebar-bg: rgba(255, 255, 255, 0.62);
+    --glass-header-bg: rgba(255, 255, 255, 0.72);
+    --glass-section-bg: rgba(255, 255, 255, 0.56);
+    --glass-card-bg: rgba(255, 255, 255, 0.68);
+    --glass-card-hover-bg: rgba(255, 255, 255, 0.86);
+    --glass-card-tinted-primary: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.76) 0%,
+      rgba(239, 246, 255, 0.64) 100%
+    );
+    --glass-card-tinted-secondary: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.78) 0%,
+      rgba(243, 244, 246, 0.66) 100%
+    );
+    --glass-card-tinted-accent: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.76) 0%,
+      rgba(238, 242, 255, 0.64) 100%
+    );
+    --glass-control-bg: rgba(255, 255, 255, 0.64);
+    --glass-control-hover-bg: rgba(255, 255, 255, 0.88);
+    --glass-control-active-bg: rgba(255, 255, 255, 0.95);
+    --glass-tag-bg: rgba(255, 255, 255, 0.72);
+    --glass-tag-hover-bg: rgba(255, 255, 255, 0.92);
+
+    /* Mobile Dock Glass Surfaces */
+    --glass-dock-bg: rgba(255, 255, 255, 0.76);
+    --glass-dock-center-bg: rgba(255, 255, 255, 0.88);
+    --dock-item-text: #475569;
+    --dock-item-hover-text: #0f172a;
+    --dock-item-active-text: #0066cc;
+    --dock-item-active-pill: rgba(0, 102, 204, 0.12);
+
+    /* Borders, Dividers & Specular Edge Highlights */
+    --glass-border: rgba(15, 23, 42, 0.085);
+    --glass-border-subtle: rgba(15, 23, 42, 0.06);
+    --glass-border-strong: rgba(0, 102, 204, 0.28);
+    --glass-divider: rgba(15, 23, 42, 0.08);
+    --glass-specular-inset: inset 0 1px 0 0 rgba(255, 255, 255, 0.88),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+    --glass-specular-strong: inset 0 1px 0 0 rgba(255, 255, 255, 0.96),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.58);
+
+    /* Multi-layered Soft Shadows */
+    --glass-shadow-section: 0 20px 48px -12px rgba(15, 23, 42, 0.07),
+      0 4px 16px -4px rgba(15, 23, 42, 0.04);
+    --glass-shadow-card: 0 8px 24px -6px rgba(15, 23, 42, 0.055),
+      0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    --glass-shadow-card-hover: 0 14px 30px -6px rgba(15, 23, 42, 0.095),
+      0 4px 10px -2px rgba(15, 23, 42, 0.045);
+    --glass-shadow-control: 0 4px 14px -3px rgba(15, 23, 42, 0.05),
+      0 1px 3px 0 rgba(15, 23, 42, 0.03);
+    --glass-shadow-dock: 0 16px 36px -6px rgba(15, 23, 42, 0.14),
+      0 4px 12px -2px rgba(15, 23, 42, 0.06);
+
+    /* Backdrop Filter Blur & Saturation */
+    --glass-blur-lg: blur(28px) saturate(180%);
+    --glass-blur-md: blur(22px) saturate(170%);
+    --glass-blur-sm: blur(14px) saturate(160%);
+
+    /* Theme Toggle Tokens */
+    --toggle-bg: 214 60% 97%;
+    --toggle-surface: rgba(255, 255, 255, 0.82);
+    --toggle-border: rgba(15, 23, 42, 0.12);
+    --toggle-sun-color: #d97706;
+    --toggle-moon-color: #38bdf8;
+
+    /* Legacy variable aliases mapped to Liquid Glass equivalents for safety */
+    --brutal-border: 1px solid var(--glass-border);
+    --brutal-shadow: var(--glass-shadow-card);
+    --brutal-shadow-sm: var(--glass-shadow-control);
+    --brutal-shadow-lg: var(--glass-shadow-card-hover);
   }
 
   .dark {
-    /* Gruvbox Dark Palette */
-    --background: 0 0% 16%;          /* #282828 bg0 */
-    --foreground: 43 59% 81%;        /* #ebdbb2 fg1 */
+    /* Core Semantic Palette — Dark Mode (Apple Midnight Obsidian & Frost) */
+    --background: 224 38% 7%;
+    --foreground: 210 40% 98%;
 
-    --card: 20 5% 22%;               /* #3c3836 bg1 */
-    --card-foreground: 43 59% 81%;   /* #ebdbb2 fg1 */
+    --card: 224 32% 11%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 20 5% 22%;            /* #3c3836 bg1 */
-    --popover-foreground: 43 59% 81%;
+    --popover: 224 32% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 145 25% 29%;          /* #385c47 Gruvbox dark aqua/green */
-    --primary-foreground: 43 59% 81%;
+    --primary: 217 36% 16%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 37 78% 35%;         /* #9e6614 Gruvbox dark yellow/ochre */
-    --secondary-foreground: 43 59% 81%;
+    --secondary: 220 26% 15%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 22 7% 29%;              /* #504945 bg2 */
-    --muted-foreground: 40 38% 73%;  /* #d5c4a1 fg2 */
+    --muted: 222 26% 14%;
+    --muted-foreground: 215 20% 72%;
 
-    --accent: 58 72% 26%;            /* #726e13 Gruvbox dark olive green */
-    --accent-foreground: 43 59% 81%;
+    --accent: 210 100% 60%;
+    --accent-foreground: 224 38% 7%;
 
-    --destructive: 6 96% 59%;        /* #fb4934 Gruvbox red */
-    --destructive-foreground: 48 87% 88%;
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 43 59% 81%;            /* #ebdbb2 */
-    --input: 43 59% 81%;
-    --ring: 42 95% 58%;              /* #fabd2f */
+    --border: 217 24% 22%;
+    --input: 217 24% 22%;
+    --ring: 210 100% 60%;
 
-    --sidebar-background: 195 6% 12%; /* #1d2021 bg0_h */
-    --sidebar-foreground: 43 59% 81%;
-    --sidebar-primary: 145 25% 29%;
-    --sidebar-primary-foreground: 43 59% 81%;
-    --sidebar-accent: 37 78% 35%;
-    --sidebar-accent-foreground: 43 59% 81%;
-    --sidebar-border: 43 59% 81%;
-    --sidebar-ring: 42 95% 58%;
+    --sidebar-background: 224 38% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 100% 60%;
+    --sidebar-primary-foreground: 224 38% 7%;
+    --sidebar-accent: 220 28% 16%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 24% 20%;
+    --sidebar-ring: 210 100% 60%;
 
-    /* Neo-brutalist tokens (Gruvbox dark) */
-    --brutal-border: 3px solid hsl(43 59% 81%);
-    --brutal-shadow: 4px 4px 0px hsl(43 59% 81%);
-    --brutal-shadow-sm: 2px 2px 0px hsl(43 59% 81%);
-    --brutal-shadow-lg: 6px 6px 0px hsl(43 59% 81%);
+    /* ==========================================================================
+       Apple-Inspired Liquid Glass Token System — Dark Mode
+       ========================================================================== */
+    --bg-svg-active: var(--bg-svg-dark);
 
-    --toggle-bg: 20 5% 22%;          /* #3c3836 Gruvbox bg1 */
+    --bg-veil: linear-gradient(
+      180deg,
+      rgba(6, 10, 19, 0.24) 0%,
+      rgba(5, 8, 16, 0.38) 100%
+    );
+
+    /* Typography Hierarchy Tokens */
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-accent: #58a6ff;
+
+    /* Liquid Glass Surface Fills */
+    --glass-sidebar-bg: rgba(13, 18, 30, 0.58);
+    --glass-header-bg: rgba(13, 18, 30, 0.72);
+    --glass-section-bg: rgba(15, 21, 35, 0.52);
+    --glass-card-bg: rgba(255, 255, 255, 0.055);
+    --glass-card-hover-bg: rgba(255, 255, 255, 0.095);
+    --glass-card-tinted-primary: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.065) 0%,
+      rgba(56, 189, 248, 0.055) 100%
+    );
+    --glass-card-tinted-secondary: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(148, 163, 184, 0.04) 100%
+    );
+    --glass-card-tinted-accent: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.065) 0%,
+      rgba(99, 102, 241, 0.06) 100%
+    );
+    --glass-control-bg: rgba(255, 255, 255, 0.06);
+    --glass-control-hover-bg: rgba(255, 255, 255, 0.11);
+    --glass-control-active-bg: rgba(255, 255, 255, 0.15);
+    --glass-tag-bg: rgba(255, 255, 255, 0.065);
+    --glass-tag-hover-bg: rgba(255, 255, 255, 0.12);
+
+    /* Mobile Dock Glass Surfaces */
+    --glass-dock-bg: rgba(13, 18, 30, 0.76);
+    --glass-dock-center-bg: rgba(20, 27, 45, 0.88);
+    --dock-item-text: #94a3b8;
+    --dock-item-hover-text: #f8fafc;
+    --dock-item-active-text: #60a5fa;
+    --dock-item-active-pill: rgba(96, 165, 250, 0.16);
+
+    /* Borders, Dividers & Specular Edge Highlights */
+    --glass-border: rgba(255, 255, 255, 0.11);
+    --glass-border-subtle: rgba(255, 255, 255, 0.075);
+    --glass-border-strong: rgba(96, 165, 250, 0.36);
+    --glass-divider: rgba(255, 255, 255, 0.09);
+    --glass-specular-inset: inset 0 1px 0 0 rgba(255, 255, 255, 0.16),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    --glass-specular-strong: inset 0 1px 0 0 rgba(255, 255, 255, 0.24),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+    /* Multi-layered Soft Shadows */
+    --glass-shadow-section: 0 24px 56px -12px rgba(0, 0, 0, 0.56),
+      0 6px 20px -4px rgba(0, 0, 0, 0.36);
+    --glass-shadow-card: 0 10px 28px -6px rgba(0, 0, 0, 0.42),
+      0 2px 8px -2px rgba(0, 0, 0, 0.28);
+    --glass-shadow-card-hover: 0 16px 36px -6px rgba(0, 0, 0, 0.58),
+      0 4px 12px -2px rgba(0, 0, 0, 0.36);
+    --glass-shadow-control: 0 4px 14px -3px rgba(0, 0, 0, 0.38),
+      0 1px 3px 0 rgba(0, 0, 0, 0.24);
+    --glass-shadow-dock: 0 18px 42px -6px rgba(0, 0, 0, 0.68),
+      0 4px 14px -2px rgba(0, 0, 0, 0.45);
+
+    /* Theme Toggle Tokens */
+    --toggle-bg: 222 32% 14%;
+    --toggle-surface: rgba(24, 32, 52, 0.82);
+    --toggle-border: rgba(255, 255, 255, 0.15);
+    --toggle-sun-color: #f59e0b;
+    --toggle-moon-color: #fbbf24;
+
+    /* Legacy variable aliases mapped to Liquid Glass equivalents for safety */
+    --brutal-border: 1px solid var(--glass-border);
+    --brutal-shadow: var(--glass-shadow-card);
+    --brutal-shadow-sm: var(--glass-shadow-control);
+    --brutal-shadow-lg: var(--glass-shadow-card-hover);
   }
 }
 
@@ -108,79 +276,274 @@
     @apply border-border;
   }
 
+  html,
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
-    font-family: 'Inter', sans-serif;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
   }
 }
 
+/* ==========================================================================
+   Dedicated Replaceable SVG Background System
+   ========================================================================== */
+.liquid-bg-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  background-color: hsl(var(--background));
+}
+
+.liquid-bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+html:not(.dark) .liquid-bg-svg-light {
+  opacity: 1;
+}
+
+html.dark .liquid-bg-svg-light {
+  opacity: 0;
+}
+
+html:not(.dark) .liquid-bg-svg-dark {
+  opacity: 0;
+}
+
+html.dark .liquid-bg-svg-dark {
+  opacity: 1;
+}
+
+.liquid-bg-veil {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-veil);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Liquid Glass Component Surfaces
+   ========================================================================== */
 @layer components {
+  /* Sidebar Glass Panel */
+  .liquid-sidebar {
+    background: var(--glass-sidebar-bg);
+    backdrop-filter: var(--glass-blur-lg);
+    -webkit-backdrop-filter: var(--glass-blur-lg);
+    border-right: 1px solid var(--glass-border);
+    box-shadow: var(--glass-specular-inset), var(--glass-shadow-section);
+  }
+
+  /* Mobile Top Header Glass Bar */
+  .liquid-mobile-header {
+    background: var(--glass-header-bg);
+    backdrop-filter: var(--glass-blur-md);
+    -webkit-backdrop-filter: var(--glass-blur-md);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--glass-specular-inset), 0 4px 20px -4px rgba(15, 23, 42, 0.05);
+  }
+
+  /* Avatar Frame */
+  .liquid-avatar-ring {
+    border: 1.5px solid var(--glass-border-strong);
+    background: var(--glass-control-bg);
+    box-shadow: var(--glass-specular-strong), var(--glass-shadow-card);
+  }
+
+  /* Primary Section Container (.brutal-card & .liquid-section) */
   .brutal-card {
-    @apply border-[3px] border-foreground bg-card p-6;
-    box-shadow: var(--brutal-shadow);
+    background: var(--glass-section-bg);
+    backdrop-filter: var(--glass-blur-md);
+    -webkit-backdrop-filter: var(--glass-blur-md);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    box-shadow: var(--glass-specular-inset), var(--glass-shadow-section);
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
+  /* Inner Interactive Project/Publication Card */
+  .liquid-project-card {
+    background: var(--glass-card-bg);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    border: 1px solid var(--glass-border);
+    border-radius: 0.9375rem;
+    padding: 1.25rem 1.375rem;
+    box-shadow: var(--glass-specular-inset), var(--glass-shadow-card);
+    transition:
+      background 0.22s ease,
+      border-color 0.22s ease,
+      box-shadow 0.22s ease,
+      transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .liquid-project-card:hover {
+    background: var(--glass-card-hover-bg);
+    border-color: var(--glass-border-strong);
+    box-shadow: var(--glass-specular-strong), var(--glass-shadow-card-hover);
+    transform: translateY(-1.5px);
+  }
+
+  /* Compact Inner Sub-Card (.brutal-card-sm) */
   .brutal-card-sm {
-    @apply border-[3px] border-foreground bg-card p-4;
-    box-shadow: var(--brutal-shadow-sm);
+    background: var(--glass-card-bg);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    border: 1px solid var(--glass-border);
+    border-radius: 0.875rem;
+    padding: 1rem 1.125rem;
+    box-shadow: var(--glass-specular-inset), var(--glass-shadow-card);
+    transition:
+      background 0.22s ease,
+      border-color 0.22s ease,
+      box-shadow 0.22s ease,
+      transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .brutal-card:hover,
-  .brutal-card-sm:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: var(--brutal-shadow-lg);
+  /* Subtle Liquid Glass Tints for Semantic Sub-Cards */
+  .brutal-card-sm.bg-primary {
+    background: var(--glass-card-tinted-primary);
   }
 
+  .brutal-card-sm.bg-secondary {
+    background: var(--glass-card-tinted-secondary);
+  }
+
+  .brutal-card-sm.bg-accent {
+    background: var(--glass-card-tinted-accent);
+  }
+
+  a .brutal-card-sm:hover,
+  .brutal-card-sm.cursor-pointer:hover {
+    background: var(--glass-card-hover-bg);
+    border-color: var(--glass-border-strong);
+    box-shadow: var(--glass-specular-strong), var(--glass-shadow-card-hover);
+    transform: translateY(-1.5px);
+  }
+
+  /* Skill Badges / Technology Tags (.brutal-tag) */
   .brutal-tag {
-    @apply border-[2px] border-foreground px-3 py-1 text-sm font-medium;
-    box-shadow: var(--brutal-shadow-sm);
-    transition: transform 0.1s, box-shadow 0.1s;
+    background: var(--glass-tag-bg);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    border: 1px solid var(--glass-border);
+    border-radius: 0.625rem;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--text-primary);
+    box-shadow: var(--glass-specular-inset), var(--glass-shadow-control);
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .brutal-tag.bg-primary,
+  .brutal-tag.bg-secondary,
+  .brutal-tag.bg-accent {
+    background: var(--glass-tag-bg);
   }
 
   .brutal-tag:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: var(--brutal-shadow);
+    background: var(--glass-tag-hover-bg);
+    border-color: var(--glass-border-strong);
+    box-shadow: var(--glass-specular-strong), var(--glass-shadow-card);
+    transform: translateY(-1px);
   }
 
+  /* Sidebar Navigation Controls (.brutal-btn) */
   .brutal-btn {
-    @apply border-[3px] border-foreground px-5 py-3 font-bold text-foreground w-full text-left;
-    font-family: 'Space Grotesk', sans-serif;
-    box-shadow: var(--brutal-shadow);
-    transition: transform 0.1s, box-shadow 0.1s;
+    background: var(--glass-control-bg);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    border: 1px solid var(--glass-border);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.125rem;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    width: 100%;
+    text-align: left;
+    box-shadow: var(--glass-specular-inset), var(--glass-shadow-control);
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .brutal-btn.bg-secondary {
+    background: var(--glass-control-bg);
   }
 
   .brutal-btn:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: var(--brutal-shadow-lg);
+    background: var(--glass-control-hover-bg);
+    border-color: var(--glass-border-strong);
+    box-shadow: var(--glass-specular-strong), var(--glass-shadow-card);
+    transform: translateY(-1px);
   }
 
   .brutal-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: none;
+    background: var(--glass-control-active-bg);
+    transform: translateY(0px) scale(0.99);
+    box-shadow: var(--glass-specular-inset);
   }
 
+  /* Theme Toggle Button */
   .theme-toggle-btn {
-    background-color: hsl(var(--toggle-bg));
-    box-shadow: var(--brutal-shadow-sm);
+    background: var(--toggle-surface);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    border: 1px solid var(--toggle-border);
+    box-shadow: var(--glass-specular-strong), var(--glass-shadow-control);
     margin-top: 0.5rem;
     transition:
-      transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-      box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-      background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.24s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease;
   }
 
   .theme-toggle-btn:hover {
-    transform: translate(-1.5px, -1.5px) scale(1.06);
-    box-shadow: var(--brutal-shadow);
+    transform: translateY(-1px) scale(1.04);
+    border-color: var(--glass-border-strong);
+    box-shadow: var(--glass-specular-strong), var(--glass-shadow-card);
   }
 
   .theme-toggle-btn:active {
-    transform: translate(1px, 1px) scale(0.95);
-    box-shadow: none;
+    transform: scale(0.95);
   }
 
   .theme-toggle-cutout {
@@ -188,41 +551,32 @@
     transition:
       transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
       opacity 0.4s ease,
-      background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color 0.3s ease;
   }
 
   .ease-spring {
     transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  /* Mobile floating rounded bottom navigation bar */
+  /* Mobile Floating Rounded Bottom Navigation Bar (Liquid Glass Dock) */
   .mobile-bottom-nav-pill {
-    background-color: #24332a;
-    border: 2.5px solid hsl(var(--foreground));
-    box-shadow:
-      0 10px 26px -4px rgba(0, 0, 0, 0.38),
-      var(--brutal-shadow-sm);
-    backdrop-filter: blur(10px);
-  }
-
-  .dark .mobile-bottom-nav-pill {
-    background-color: #1d2021;
-    border-color: hsl(var(--foreground));
-    box-shadow:
-      0 12px 28px -4px rgba(0, 0, 0, 0.65),
-      0 2px 0px hsl(var(--foreground));
+    background: var(--glass-dock-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-specular-strong), var(--glass-shadow-dock);
+    backdrop-filter: var(--glass-blur-lg);
+    -webkit-backdrop-filter: var(--glass-blur-lg);
   }
 
   .mobile-nav-center-dock {
-    background-color: #2f4739;
-    border: 2.5px solid hsl(var(--foreground));
-    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.22);
+    background: var(--glass-dock-center-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-specular-strong), 0 -4px 16px rgba(15, 23, 42, 0.08);
+    backdrop-filter: var(--glass-blur-md);
+    -webkit-backdrop-filter: var(--glass-blur-md);
   }
 
   .dark .mobile-nav-center-dock {
-    background-color: #282828;
-    border-color: hsl(var(--foreground));
-    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--glass-specular-strong), 0 -4px 18px rgba(0, 0, 0, 0.45);
   }
 
   .mobile-nav-center-dock .theme-toggle-btn {
@@ -230,11 +584,68 @@
     width: 2.25rem;
     height: 2.25rem;
   }
+
+  .mobile-nav-item {
+    color: var(--dock-item-text);
+  }
+
+  .mobile-nav-item:hover {
+    color: var(--dock-item-hover-text);
+  }
+
+  .mobile-nav-item-active {
+    color: var(--dock-item-active-text);
+  }
+
+  .mobile-nav-icon-pill-active {
+    background: var(--dock-item-active-pill);
+    color: var(--dock-item-active-text);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
+  }
 }
 
+/* ==========================================================================
+   Responsive & Mobile Blur Optimization
+   ========================================================================== */
 @media (max-width: 1023px) {
   .content-scroll {
-    padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(6.75rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --glass-blur-lg: blur(20px) saturate(165%);
+    --glass-blur-md: blur(16px) saturate(155%);
+    --glass-blur-sm: blur(10px) saturate(145%);
+  }
+
+  .brutal-card {
+    padding: 1.25rem;
+    border-radius: 1.125rem;
+  }
+}
+
+/* ==========================================================================
+   Accessibility & Reduced Motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .brutal-card:hover,
+  .brutal-card-sm:hover,
+  .liquid-project-card:hover,
+  .brutal-tag:hover,
+  .brutal-btn:hover,
+  .theme-toggle-btn:hover {
+    transform: none !important;
   }
 }
 
@@ -253,14 +664,36 @@
   z-index: 9999;
 }
 
-/* Custom scrollbar */
+/* Refined Subtle Glass Scrollbar */
 .content-scroll::-webkit-scrollbar {
   width: 8px;
 }
+
 .content-scroll::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: transparent;
 }
+
 .content-scroll::-webkit-scrollbar-thumb {
-  background: hsl(var(--foreground));
-  border: 1px solid hsl(var(--background));
+  background: rgba(100, 116, 139, 0.28);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.content-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.45);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.dark .content-scroll::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.dark .content-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.42);
+  border: 2px solid transparent;
+  background-clip: content-box;
 }

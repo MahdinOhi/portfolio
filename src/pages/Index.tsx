@@ -21,9 +21,26 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="h-screen flex overflow-hidden">
+    <div className="relative h-screen flex overflow-hidden">
+      {/* Dedicated replaceable SVG background layer for Light and Dark modes */}
+      <div className="liquid-bg-stage" aria-hidden="true">
+        <img
+          src="/backgrounds/light.svg"
+          alt=""
+          decoding="async"
+          className="liquid-bg-svg liquid-bg-svg-light"
+        />
+        <img
+          src="/backgrounds/dark.svg"
+          alt=""
+          decoding="async"
+          className="liquid-bg-svg liquid-bg-svg-dark"
+        />
+        <div className="liquid-bg-veil" />
+      </div>
+
       <PortfolioSidebar onNavigate={scrollToSection} />
-      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+      <div className="relative z-10 flex-1 flex flex-col h-screen overflow-hidden">
         <MobileHeader onNavigate={scrollToSection} />
         <div
           ref={contentRef}

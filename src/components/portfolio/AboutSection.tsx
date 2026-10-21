@@ -29,28 +29,29 @@ const AboutSection = () => {
         {infoItems.map((item) => (
           <div
             key={item.label}
-            className="brutal-card-sm bg-primary transition-all duration-100"
+            className="brutal-card-sm bg-primary"
           >
-            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               {item.label}
             </p>
-            <p className="font-heading font-bold text-lg mt-1">{item.value}</p>
+            <p className="font-heading font-semibold text-lg mt-1">{item.value}</p>
           </div>
         ))}
         <a
           href="https://flowcv.com/resume/f0ek4gwwrd"
           target="_blank"
           rel="noopener noreferrer"
+          className="rounded-[0.875rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <div className="brutal-card-sm bg-secondary flex items-center gap-3 transition-all duration-100 cursor-pointer">
-            <FileDown className="w-6 h-6" />
+          <div className="brutal-card-sm bg-secondary flex items-center gap-3 cursor-pointer">
+            <FileDown className="w-6 h-6 text-[var(--text-accent)]" />
 
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Resume
               </p>
 
-              <p className="font-heading font-bold text-lg mt-1">Download</p>
+              <p className="font-heading font-semibold text-lg mt-1">Download</p>
             </div>
           </div>
         </a>
@@ -64,12 +65,13 @@ const AboutSection = () => {
             href={exp.link}
             target="_blank"
             rel="noopener noreferrer"
+            className="rounded-[0.875rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <div className="brutal-card-sm bg-accent transition-all duration-100 flex items-center gap-3 cursor-pointer hover:-translate-x-[2px] hover:-translate-y-[2px]">
-              <Briefcase className="w-5 h-5 shrink-0" />
+            <div className="brutal-card-sm bg-accent flex items-center gap-3 cursor-pointer">
+              <Briefcase className="w-5 h-5 shrink-0 text-[var(--text-accent)]" />
 
               <div>
-                <p className="font-heading font-bold">{exp.company}</p>
+                <p className="font-heading font-semibold">{exp.company}</p>
                 <p className="text-sm text-muted-foreground">{exp.role}</p>
               </div>
             </div>

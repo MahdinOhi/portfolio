@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="none">
+    <defs>
+        <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="130" />
+        </filter>
+        
+        <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" result="turbulence"/>
+            <feColorMatrix type="saturate" values="0" in="turbulence" result="grayscale"/>
+        </filter>
+    </defs>
+    <g filter="url(#blur)">
+        
+            <defs>
+                <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF6B6B" />
+                    <stop offset="100%" stop-color="#4D96FF" />
+                </linearGradient>
+            </defs>
+            <rect width="800" height="600" fill="url(#bgGrad)" />
+        <circle cx="403.4" cy="500.3" r="277.2" fill="#FF6B6B" opacity="0.90" style="mix-blend-mode: normal" /><circle cx="453.8" cy="103.0" r="259.3" fill="#FEC89A" opacity="0.90" style="mix-blend-mode: normal" /><circle cx="621.3" cy="359.0" r="260.9" fill="#FFD93D" opacity="0.90" style="mix-blend-mode: normal" /><circle cx="542.6" cy="130.4" r="244.1" fill="#6BCB77" opacity="0.90" style="mix-blend-mode: normal" /><circle cx="406.1" cy="118.7" r="282.4" fill="#4D96FF" opacity="0.90" style="mix-blend-mode: normal" />
+    </g>
+    
+        <rect width="800" height="600" filter="url(#noise)" opacity="0.47" style="mix-blend-mode: overlay"/>
+</svg>

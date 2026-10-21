@@ -24,28 +24,28 @@ const ContactSection = () => {
       <h3 className="font-heading font-bold text-xl mb-4">Contact Me</h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        <div className="brutal-card-sm bg-primary flex items-center gap-3 transition-all duration-100">
-          <Mail className="w-5 h-5 shrink-0" />
+        <div className="brutal-card-sm bg-primary flex items-center gap-3">
+          <Mail className="w-5 h-5 shrink-0 text-[var(--text-accent)]" />
 
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               Email
             </p>
 
             <a
               href="mailto:mahdinislamohi@gmail.com"
-              className="font-heading font-bold text-sm underline"
+              className="font-heading font-semibold text-sm underline decoration-[var(--glass-border-strong)] underline-offset-4 hover:text-[var(--text-accent)] transition-colors break-all"
             >
               mahdinislamohi@gmail.com
             </a>
           </div>
         </div>
 
-        <div className="brutal-card-sm bg-primary flex items-center gap-3 transition-all duration-100">
-          <Phone className="w-5 h-5 shrink-0" />
+        <div className="brutal-card-sm bg-primary flex items-center gap-3">
+          <Phone className="w-5 h-5 shrink-0 text-[var(--text-accent)]" />
 
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               WhatsApp (Recommended)
             </p>
 
@@ -53,7 +53,7 @@ const ContactSection = () => {
               href="https://wa.me/8801577352617"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-heading font-bold text-sm underline"
+              className="font-heading font-semibold text-sm underline decoration-[var(--glass-border-strong)] underline-offset-4 hover:text-[var(--text-accent)] transition-colors"
             >
               +8801577352617
             </a>
@@ -70,13 +70,14 @@ const ContactSection = () => {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
+            className="rounded-[0.875rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <div className="brutal-card-sm bg-secondary flex items-center justify-between transition-all duration-100 cursor-pointer hover:-translate-x-[2px] hover:-translate-y-[2px]">
-              <span className="font-heading font-bold text-sm">
+            <div className="brutal-card-sm bg-secondary group flex items-center justify-between cursor-pointer">
+              <span className="font-heading font-semibold text-sm">
                 {link.name}
               </span>
 
-              <ExternalLink className="w-4 h-4 shrink-0" />
+              <ExternalLink className="w-4 h-4 shrink-0 text-muted-foreground group-hover:text-[var(--text-accent)] transition-colors duration-200" />
             </div>
           </a>
         ))}

@@ -119,28 +119,24 @@ const MobileHeader = ({ onNavigate }: MobileHeaderProps) => {
         }
         aria-current={isActive ? "page" : undefined}
         className={`mobile-nav-item group relative flex flex-1 flex-col items-center justify-center min-h-[44px] min-w-[40px] py-1 px-0.5 rounded-full transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-          isActive
-            ? "mobile-nav-item-active"
-            : "text-[#ebdbb2]/75 hover:text-[#ebdbb2]"
+          isActive ? "mobile-nav-item-active" : ""
         }`}
       >
         <span
-          className={`relative flex items-center justify-center w-7 h-6 rounded-full transition-all duration-200 ${
+          className={`relative flex items-center justify-center w-8 h-6 rounded-full transition-all duration-200 ${
             isActive
-              ? "bg-secondary text-foreground scale-105 shadow-[0_2px_8px_rgba(0,0,0,0.25)]"
-              : "group-hover:bg-white/10"
+              ? "mobile-nav-icon-pill-active scale-105"
+              : "group-hover:bg-foreground/5"
           }`}
         >
           <Icon
             className="w-4 h-4 shrink-0 transition-transform duration-200"
-            strokeWidth={isActive ? 2.4 : 1.9}
+            strokeWidth={isActive ? 2.3 : 1.85}
           />
         </span>
         <span
           className={`mt-0.5 text-[10px] max-[360px]:text-[9px] leading-tight font-heading tracking-tight truncate max-w-full transition-colors duration-200 ${
-            isActive
-              ? "font-bold text-[#f5c242] dark:text-[#fabd2f]"
-              : "font-medium text-[#ebdbb2]/75"
+            isActive ? "font-semibold" : "font-medium"
           }`}
         >
           {item.label}
@@ -151,14 +147,11 @@ const MobileHeader = ({ onNavigate }: MobileHeaderProps) => {
 
   return (
     <>
-      {/* Top Mobile Profile Header (Unchanged profile banner) */}
-      <header className="lg:hidden border-b-2 border-foreground bg-primary px-4 py-3 sticky top-0 z-40">
+      {/* Top Mobile Profile Header */}
+      <header className="lg:hidden liquid-mobile-header px-4 py-3 sticky top-0 z-40">
         <div className="flex items-center justify-between w-full gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <div
-              className="w-11 h-11 shrink-0 aspect-square rounded-full border-2 border-foreground bg-secondary flex items-center justify-center overflow-hidden"
-              style={{ boxShadow: "var(--brutal-shadow-sm)" }}
-            >
+            <div className="w-11 h-11 shrink-0 aspect-square rounded-full liquid-avatar-ring flex items-center justify-center overflow-hidden p-0.5">
               <img
                 src="mahdin_ohi.png"
                 alt="Mahdin Ohi"

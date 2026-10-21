@@ -24,6 +24,35 @@
             name="twitter:image"
             content="https://lovable.dev/opengraph-image-p98pqg.png"
         />
+        <script>
+            (function () {
+                try {
+                    var saved = null;
+                    try {
+                        saved = window.localStorage.getItem("theme");
+                    } catch (e) {
+                        saved = null;
+                    }
+                    var isDark =
+                        saved === "dark"
+                            ? true
+                            : saved === "light"
+                              ? false
+                              : window.matchMedia &&
+                                window.matchMedia("(prefers-color-scheme: dark)").matches;
+                    var root = document.documentElement;
+                    if (isDark) {
+                        root.classList.add("dark");
+                        root.style.colorScheme = "dark";
+                    } else {
+                        root.classList.remove("dark");
+                        root.style.colorScheme = "light";
+                    }
+                } catch (err) {
+                    // Fail gracefully if DOM or matchMedia is restricted
+                }
+            })();
+        </script>
     </head>
 
     <body>

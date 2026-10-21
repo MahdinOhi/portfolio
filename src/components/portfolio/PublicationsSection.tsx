@@ -29,7 +29,7 @@ const PublicationsSection = () => {
             href={p.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-pointer"
+            className="block cursor-pointer rounded-[0.9375rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <ProjectCard title={p.title} description={p.description} />
           </a>
