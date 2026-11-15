@@ -9,16 +9,16 @@ const webApps = [
     link: "https://github.com/MahdinOhi/refMiner",
   },
   {
+    title: "PixieGPT",
+    description:
+      "Developed PixieGPT, an AI-powered organizational question-answering system designed for universities, integrating a Hierarchical Knowledge Graph (HKG) with Retrieval-Augmented Generation (RAG). Implemented semantic search using E5-base embeddings and context-aware response generation using Mistral 7B. Evaluated the system on thousands of university-related queries using a domain-specific dataset based on East West University's institutional information. Achieved 80.10% factual accuracy, an F1-score of 87.24%, and a BERTScore of 84.28%, with a Mean Reciprocal Rank (MRR) of 78.40%. Designed a modular, scalable architecture with theoretical O(log n) hierarchical retrieval complexity, adaptable to universities and other hierarchical organizations.",
+    link: "https://ieeexplore.ieee.org/document/11545594",
+  },
+  {
     title: "Map Veto Broadcast System",
     description:
       "A real-time esports map veto platform using Socket.IO & Flask with JWT-based authentication, enabling timed ban/pick workflows, role-based admin control, and live match updates with email-integrated team coordination.",
     link: "https://github.com/MahdinOhi/veto-master",
-  },
-  {
-    title: "PixieGPT",
-    description:
-      "Developed an AI-powered question-answering system for any organization using a hierarchical knowledge graph and custom guardrails @DHMAINetRG.",
-    link: "#",
   },
   {
     title: "MailSwift",
@@ -29,30 +29,22 @@ const webApps = [
   {
     title: "E-commerce Web App",
     description:
-      "Developed a full-stack e-commerce application using PHP following MVC architecture, featuring user authentication, product catalog management, shopping cart functionality, secure order processing, payment gateway integration, and responsive user interfaces.",
+      "Developed a full-stack e-commerce application for leading retailers FourStarIT BD using PHP following MVC architecture, featuring user authentication, product catalog management, shopping cart functionality, secure order processing, payment gateway integration, and responsive user interfaces.",
     link: "https://github.com/MahdinOhi/FourStarIT-WebEcom",
   },
   {
     title: "BeeBlogs",
-    description: "A simple blog website made by NextJS",
+    description:
+      "A Markdown-powered blogging platform that automatically syncs and publishes blog posts directly from an Obsidian vault. Simply push .md files to the obsidian vault, and BeeBlogs automatically updates the webview with the latest content. Built with Next.js, JavaScript, and Tailwind CSS.",
     link: "https://beeblogs.vercel.app/",
-  },
-  {
-    title: "LinkStack | LinkTree Clone",
-    description: "A simple clone of LinkTree",
-    link: "#",
-  },
-  {
-    title: "To-Do Webapp",
-    description: "A simple to-do list webapp",
-    link: "#",
   },
 ];
 
 const clis = [
   {
     title: "EduBase",
-    description: "A DBMS built by C and B+ Trees",
+    description:
+      "A terminal-based DBMS built from scratch in C, featuring a MySQL-inspired query interface and B+ Tree indexing for efficient data storage, retrieval, and sorting. Implements encrypted data storage to protect records, with support for structured database operations and optimized query execution.",
     link: "https://github.com/MahdinOhi/EduBase",
   },
 ];
