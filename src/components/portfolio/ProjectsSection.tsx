@@ -3,6 +3,12 @@ import ProjectCard from "./ProjectCard";
 
 const webApps = [
   {
+    title: "MealSense",
+    description:
+      "Developing MealSense, an AI-powered food recognition and personalized nutrition tracking platform designed to simplify dietary monitoring. Trained a DINOv3-based deep learning model for multi-class food classification, achieving 98% classification accuracy across 19 food classes using a dataset of 1000+ images. Fine-tuned a Vision-Language Model (VLM) using LoRA for ingredient identification, portion estimation, and nutritional mapping. Evaluated the AI pipeline using precision (91%), recall (93%), and F1-score (92%). Integrated computer vision and multimodal AI to generate structured nutritional information, including calories, protein, carbohydrates, and fats, with an average inference time of 2-3 seconds. Developed a modular full-stack architecture using Django REST Framework, React 19, and TypeScript, featuring meal logging, nutritional history, and personalized, disease-aware dietary insights, with a focus on Bangladeshi cuisine.",
+    link: "https://github.com/PuffRice/mealsense",
+  },
+  {
     title: "RefMiner",
     description:
       "A self-hostable AI research assistant that retrieves arXiv papers and uses a local LLM to extract 6+ structured key insights, reducing manual literature review time by ~70% with exportable tabular outputs.",
